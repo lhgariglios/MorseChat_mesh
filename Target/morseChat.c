@@ -2,7 +2,6 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-
 // ── Macros de pinos ───────────────────────────────────────────────────────────
 
 #define ROW1_DISCONNECT()    (NRF_P0->PIN_CNF[21] = 0x00000002)
@@ -99,6 +98,18 @@ const led_id_t sent[] = {
     LED32, LED43, LED34, LED25
 };
 
+const led_id_t square[] = {
+    LED22, LED32, LED42, LED23, LED43, LED24, LED34, LED44
+};
+
+const led_id_t * const figures[] = { dot, slash, sent, square };
+const uint8_t figures_size[] = {
+    sizeof(dot),
+    sizeof(slash),
+    sizeof(sent),
+    sizeof(square)
+};
+
 const led_id_t Zero[] = {
     LED12, LED22, LED32, LED42, LED52, LED13, LED53, LED14, LED24, LED34, LED44, LED54
 };
@@ -127,13 +138,6 @@ const uint8_t Digits_size[] = {
     sizeof(Three),
     sizeof(Four),
     sizeof(Five)
-};
-
-const led_id_t * const figures[] = { dot, slash, sent };
-const uint8_t figures_size[] = {
-    sizeof(dot),
-    sizeof(slash),
-    sizeof(sent)
 };
 
 // ── LED ────────────────────────────────────────────────────────────
@@ -212,6 +216,7 @@ void show(led_id_t* figure, int size, uint32_t frame_time_ms){
 
 volatile bool dot_select = false;
 volatile bool slash_select = false;
+volatile bool save_letter = false;
 volatile bool send = false;
 volatile bool change_id = false;
 volatile bool simultaneous_handled = false;
@@ -297,7 +302,9 @@ void GPIOTE_IRQHandler(void)
                 press_start_B = 0;
                 change_id = true;
                 duration = 0;
-            } else if (duration > 200 && !simultaneous_handled){
+            } else if(duration > 150 && duration < 300 && !simultaneous_handled){
+                save_letter = true;
+            } else if (duration > 300 && !simultaneous_handled){
                 send = true;
             }else{}
         }
@@ -309,6 +316,45 @@ void GPIOTE_IRQHandler(void)
 #define  N_Ids 6
 const int My_ID = 1;
 int Receiver_ID = 0;
+
+// ── Message configuration ─────────────────────────────────────────────────────
+
+#define MAX_SYMBOLS 32
+
+char message[MAX_SYMBOLS + 1]; // +1 para '\0'
+int  message_len = 0;
+
+#define MAX_MORSE_PER_LETTER 5
+
+char morse_buf[MAX_MORSE_PER_LETTER + 1]; // símbolos da letra atual
+int  morse_len = 0;
+
+// morse → letter
+typedef struct { const char* code; char letter; } MorseEntry;
+
+const MorseEntry morse_table[] = {
+    {".-",   'A'}, {"-...", 'B'}, {"-.-.", 'C'}, {"-..",  'D'},
+    {".",    'E'}, {"..-.", 'F'}, {"--.",  'G'}, {"....", 'H'},
+    {"..",   'I'}, {".---", 'J'}, {"-.-",  'K'}, {".-..", 'L'},
+    {"--",   'M'}, {"-.",   'N'}, {"---",  'O'}, {".--.", 'P'},
+    {"--.-", 'Q'}, {".-.",  'R'}, {"...",  'S'}, {"-",    'T'},
+    {"..-",  'U'}, {"...-", 'V'}, {".--",  'W'}, {"-..-", 'X'},
+    {"-.--", 'Y'}, {"--..", 'Z'},
+    {"-----",'0'}, {".----",'1'}, {"..---",'2'}, {"...--",'3'},
+    {"....-",'4'}, {".....", '5'},{"-....", '6'}, {"--...", '7'},
+    {"---..", '8'}, {"----.", '9'},
+    {0, 0}
+};
+
+char morse_to_char(const char* code) {
+    for (int i = 0; morse_table[i].code != 0; i++) {
+        const char* a = morse_table[i].code;
+        const char* b = code;
+        while (*a && *b && *a == *b) { a++; b++; }
+        if (*a == 0 && *b == 0) return morse_table[i].letter;
+    }
+    return '?'; 
+}
 
 // ── Main ──────────────────────────────────────────────────────────────────────
 
@@ -326,20 +372,38 @@ int main(void) {
         if (dot_select){
             dot_select = false;
             show(figures[0], figures_size[0], 500);
+            if (morse_len < MAX_MORSE_PER_LETTER) {
+                morse_buf[morse_len++] = '.';
+                morse_buf[morse_len]   = '\0';
+            }
         }else if (slash_select){
             slash_select = false;
             show(figures[1], figures_size[1], 500); 
-        }
-        else if (send){
+            if (morse_len < MAX_MORSE_PER_LETTER) {
+                morse_buf[morse_len++] = '-';
+                morse_buf[morse_len]   = '\0';
+            }
+        }else if (save_letter){
+            save_letter = false;
+            show(figures[3], figures_size[3], 500); 
+            if (morse_len > 0 && message_len < MAX_SYMBOLS) {
+                message[message_len++] = morse_to_char(morse_buf);
+                message[message_len]   = '\0';
+                morse_len = 0;       
+                morse_buf[0] = '\0';
+            }
+        }else if (send){
             send = false;
             show(figures[2], figures_size[2], 500);
-        }
-        else if (change_id){
+            message_len = 0;
+            message[0]  = '\0';
+            morse_len   = 0;
+            morse_buf[0] = '\0';
+        }else if (change_id){
             change_id = false;
             Receiver_ID = (Receiver_ID + 1) % N_Ids; 
             show(Digits[Receiver_ID], Digits_size[Receiver_ID], 500);
-        }
-        else{}  
+        }else{}  
     }
     
 }
