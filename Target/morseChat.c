@@ -99,6 +99,36 @@ const led_id_t sent[] = {
     LED32, LED43, LED34, LED25
 };
 
+const led_id_t Zero[] = {
+    LED12, LED22, LED32, LED42, LED52, LED13, LED53, LED14, LED24, LED34, LED44, LED54
+};
+const led_id_t One[] = {
+    LED22, LED13, LED23, LED33, LED43,LED52, LED53, LED54
+};
+const led_id_t Two[] = {
+    LED12, LED13, LED14,LED25,LED33, LED34,LED42,LED52, LED53, LED54, LED55
+};
+const led_id_t Three[] = {
+    LED12, LED13, LED14, LED25, LED33, LED34,
+    LED45, LED52, LED53, LED54
+};
+const led_id_t Four[] = {
+    LED14, LED23, LED24, LED32, LED33, LED34, LED35, LED44, LED54
+};
+const led_id_t Five[] = {
+    LED11, LED12, LED13, LED14, LED15, LED21, LED31, LED32, LED33, LED34, LED45, LED51, LED52, LED53, LED54
+};
+
+const led_id_t * const Digits[] = { Zero, One, Two, Three, Four, Five };
+const uint8_t Digits_size[] = {
+    sizeof(Zero),
+    sizeof(One),
+    sizeof(Two),
+    sizeof(Three),
+    sizeof(Four),
+    sizeof(Five)
+};
+
 const led_id_t * const figures[] = { dot, slash, sent };
 const uint8_t figures_size[] = {
     sizeof(dot),
@@ -163,25 +193,6 @@ void leds_on(led_id_t led_id) {
     }
 }
 
-//void show(led_id_t* figure, int size, uint32_t frame_time_ms)
-//{
-//    uint32_t start = ms_ticks;
-
-//    while ((ms_ticks - start) < frame_time_ms) {
-//        for (int i = 0; i < size; i++) {
-//            leds_all_off();
-//            leds_on(figure[i]);
-
-//            uint32_t frame_start = ms_ticks;
-//            while ((ms_ticks - frame_start) < 5) {
-//                // wait
-//            }
-//        }
-//    }
-
-//    leds_all_off();
-//}
-
 void show(led_id_t* figure, int size, uint32_t frame_time_ms){
     int i = 0;
     uint32_t start = ms_ticks;
@@ -197,8 +208,13 @@ void show(led_id_t* figure, int size, uint32_t frame_time_ms){
 
 // ── Bottoms Handler ───────────────────────────────────────────────────────────
 
-volatile bool buttonA = false;
-volatile bool buttonB = false;
+#define SIMULTANEOUS_WINDOW_MS 50
+
+volatile bool dot_select = false;
+volatile bool slash_select = false;
+volatile bool send = false;
+volatile bool change_id = false;
+volatile bool simultaneous_handled = false;
 
 volatile uint32_t press_start_A = 0;
 volatile uint32_t press_start_B = 0;
@@ -225,26 +241,40 @@ static void gpiote_init(void)
     NVIC_EnableIRQ(GPIOTE_IRQn);
 }
 
-void Both_pressed(){
-    show(figures[2], figures_size[2], 500);
-}
-
 void GPIOTE_IRQHandler(void)
 {
-    // Botão A gerou interrupção
     if (NRF_GPIOTE->EVENTS_IN[0]) {
         NRF_GPIOTE->EVENTS_IN[0] = 0;
 
         bool a = ((NRF_P0->IN & (1 << BUTTON_A_PIN)) == 0);
+
         if (a) {
             press_start_A = ms_ticks;
+            simultaneous_handled = false;
         } else {
             uint32_t duration = ms_ticks - press_start_A;
-            buttonA = true;
+
+            // Verifica se B foi pressionado dentro da janela de simultaneidade
+            bool simultaneous = (press_start_B != 0) &&
+                                 (press_start_A >= press_start_B 
+                                    ? press_start_A - press_start_B 
+                                    : press_start_B - press_start_A) 
+                                 < SIMULTANEOUS_WINDOW_MS;
+
+            if (simultaneous && !simultaneous_handled) {
+                simultaneous_handled = true;
+                press_start_A = 0;  
+                press_start_B = 0;
+                change_id = true;
+                duration = 0;
+            } else if (duration > 150 && duration < 300 && !simultaneous_handled) {
+                dot_select = true;
+            } else if (duration > 300 && !simultaneous_handled){
+                slash_select = true;
+            }else{}
         }
     }
 
-    // Botão B gerou interrupção
     if (NRF_GPIOTE->EVENTS_IN[1]) {
         NRF_GPIOTE->EVENTS_IN[1] = 0;
 
@@ -252,17 +282,33 @@ void GPIOTE_IRQHandler(void)
 
         if (b) {
             press_start_B = ms_ticks;
+            simultaneous_handled = false;
         } else {
             uint32_t duration = ms_ticks - press_start_B;
-            buttonB = true;
+            bool simultaneous = (press_start_A != 0) &&
+                                 (press_start_B >= press_start_A 
+                                    ? press_start_B - press_start_A 
+                                    : press_start_A - press_start_B) 
+                                 < SIMULTANEOUS_WINDOW_MS;
+
+            if (simultaneous && !simultaneous_handled) {
+                simultaneous_handled = true;
+                press_start_A = 0;  
+                press_start_B = 0;
+                change_id = true;
+                duration = 0;
+            } else if (duration > 200 && !simultaneous_handled){
+                send = true;
+            }else{}
         }
     }
 }
 
+// ── Id configuration ──────────────────────────────────────────────────────────
 
-
-
-
+#define  N_Ids 6
+const int My_ID = 1;
+int Receiver_ID = 0;
 
 // ── Main ──────────────────────────────────────────────────────────────────────
 
@@ -277,13 +323,21 @@ int main(void) {
     show(figures[1], figures_size[1], 500);
 
     while(1){
-        if (buttonA){
-            buttonA = false;
+        if (dot_select){
+            dot_select = false;
             show(figures[0], figures_size[0], 500);
+        }else if (slash_select){
+            slash_select = false;
+            show(figures[1], figures_size[1], 500); 
         }
-        else if (buttonB){
-            buttonB = false;
-            show(figures[1], figures_size[1], 500);
+        else if (send){
+            send = false;
+            show(figures[2], figures_size[2], 500);
+        }
+        else if (change_id){
+            change_id = false;
+            Receiver_ID = (Receiver_ID + 1) % N_Ids; 
+            show(Digits[Receiver_ID], Digits_size[Receiver_ID], 500);
         }
         else{}  
     }
