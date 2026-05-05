@@ -1,0 +1,553 @@
+***********************************************************************************************
+***                                                                                         ***
+***                                    LINK INFORMATION                                     ***
+***                                                                                         ***
+***********************************************************************************************
+
+Linker version:
+
+  SEGGER ARM Linker 4.34.1 compiled May  6 2022 02:04:02
+  Copyright (c) 2017-2022 SEGGER Microcontroller GmbH    www.segger.com
+
+
+***********************************************************************************************
+***                                                                                         ***
+***                                     MODULE SUMMARY                                      ***
+***                                                                                         ***
+***********************************************************************************************
+
+Memory use by input file:
+
+  Object File                                       RX Code     RO Data     RW Data     ZI Data
+  ---------------------------------------------  ----------  ----------  ----------  ----------
+  nrf52833_Vectors.o                                    348                                    
+  nRF_Startup.o                                          64                                    
+  SEGGER_crtinit_v7em_little.o                           52                                    
+  SEGGER_THUMB_Startup.o                                 20                                    
+  system_nrf52.o                                        900                       4            
+  target.o                                              556                       6            
+  ---------------------------------------------  ----------  ----------  ----------  ----------
+  Subtotal (6 objects)                                1 940                      10            
+  ---------------------------------------------  ----------  ----------  ----------  ----------
+  Linker created (shared data, fills, blocks):                       34                   2 048
+  =============================================  ==========  ==========  ==========  ==========
+  Total:                                              1 940          34          10       2 048
+  =============================================  ==========  ==========  ==========  ==========
+
+Memory use by archive member:
+
+Memory use by linker:
+
+  Description                                       RX Code     RO Data     RW Data     ZI Data
+  ---------------------------------------------  ----------  ----------  ----------  ----------
+  Initialization table                                               34                        
+  Memory for block 'stack'                                                                2 048
+  ---------------------------------------------  ----------  ----------  ----------  ----------
+  Subtotal (linker created):                                         34                   2 048
+  ---------------------------------------------  ----------  ----------  ----------  ----------
+  Objects (6 files)                                   1 940                      10            
+  =============================================  ==========  ==========  ==========  ==========
+  Total:                                              1 940          34          10       2 048
+  =============================================  ==========  ==========  ==========  ==========
+
+
+***********************************************************************************************
+***                                                                                         ***
+***                                     SECTION DETAIL                                      ***
+***                                                                                         ***
+***********************************************************************************************
+
+Sections by address:
+
+  Range              Symbol or [section] Name         Size  Al  Init  Ac  Object File
+  -----------------  -------------------------  ----------  --  ----  --  -----------
+  00000000-000000ff  _vectors                          256  256
+                                                                Code  RX  nrf52833_Vectors.o
+  00000100-00000127  HardFault_Handler                  40   4  Code  RX  nRF_Startup.o
+  00000128-0000013b  _start                             20   4  Code  RX  SEGGER_THUMB_Startup.o
+  0000013c-00000305  SystemInit                        458   2  Code  RX  system_nrf52.o
+  00000306-00000367  nrf52_errata_36                    98   2  Code  RX  system_nrf52.o
+  00000368-000003c9  nrf52_errata_66                    98   2  Code  RX  system_nrf52.o
+  000003ca-0000042b  nrf52_errata_136                   98   2  Code  RX  system_nrf52.o
+  0000042c-00000449  nrf52_handle_approtect             30   2  Code  RX  system_nrf52.o
+  0000044a-000004ab  nrf52_configuration_249            98   2  Code  RX  system_nrf52.o
+  000004ac-0000053d  main                              146   2  Code  RX  target.o
+  0000053e-00000567  led_off                            42   2  Code  RX  target.o
+  00000568-000005a9  led_on                             66   2  Code  RX  target.o
+  000005aa-000005bb  delay                              18   2  Code  RX  target.o
+  000005bc-000005bd  NMI_Handler                         2   2  Code  RX  nrf52833_Vectors.o
+  000005be-000005bf  SVC_Handler                         2   2  Code  RX  nrf52833_Vectors.o
+  000005c0-000005c1  PendSV_Handler                      2   2  Code  RX  nrf52833_Vectors.o
+  000005c2-000005c3  SysTick_Handler                     2   2  Code  RX  nrf52833_Vectors.o
+  000005c4-000005c5  POWER_CLOCK_IRQHandler              2   2  Code  RX  nrf52833_Vectors.o
+  000005c6-000005c7  RADIO_IRQHandler                    2   2  Code  RX  nrf52833_Vectors.o
+  000005c8-000005c9  UARTE0_UART0_IRQHandler             2   2  Code  RX  nrf52833_Vectors.o
+  000005ca-000005cb  SPIM0_SPIS0_TWIM0_TWIS0_SPI0_TWI0_IRQHandler
+                                                         2   2  Code  RX  nrf52833_Vectors.o
+  000005cc-000005cd  SPIM1_SPIS1_TWIM1_TWIS1_SPI1_TWI1_IRQHandler
+                                                         2   2  Code  RX  nrf52833_Vectors.o
+  000005ce-000005cf  NFCT_IRQHandler                     2   2  Code  RX  nrf52833_Vectors.o
+  000005d0-000005d1  GPIOTE_IRQHandler                   2   2  Code  RX  nrf52833_Vectors.o
+  000005d2-000005d3  SAADC_IRQHandler                    2   2  Code  RX  nrf52833_Vectors.o
+  000005d4-000005d5  TIMER0_IRQHandler                   2   2  Code  RX  nrf52833_Vectors.o
+  000005d6-000005d7  TIMER1_IRQHandler                   2   2  Code  RX  nrf52833_Vectors.o
+  000005d8-000005d9  TIMER2_IRQHandler                   2   2  Code  RX  nrf52833_Vectors.o
+  000005da-000005db  RTC0_IRQHandler                     2   2  Code  RX  nrf52833_Vectors.o
+  000005dc-000005dd  TEMP_IRQHandler                     2   2  Code  RX  nrf52833_Vectors.o
+  000005de-000005df  RNG_IRQHandler                      2   2  Code  RX  nrf52833_Vectors.o
+  000005e0-000005e1  ECB_IRQHandler                      2   2  Code  RX  nrf52833_Vectors.o
+  000005e2-000005e3  CCM_AAR_IRQHandler                  2   2  Code  RX  nrf52833_Vectors.o
+  000005e4-000005e5  WDT_IRQHandler                      2   2  Code  RX  nrf52833_Vectors.o
+  000005e6-000005e7  RTC1_IRQHandler                     2   2  Code  RX  nrf52833_Vectors.o
+  000005e8-000005e9  QDEC_IRQHandler                     2   2  Code  RX  nrf52833_Vectors.o
+  000005ea-000005eb  COMP_LPCOMP_IRQHandler              2   2  Code  RX  nrf52833_Vectors.o
+  000005ec-000005ed  SWI0_EGU0_IRQHandler                2   2  Code  RX  nrf52833_Vectors.o
+  000005ee-000005ef  SWI1_EGU1_IRQHandler                2   2  Code  RX  nrf52833_Vectors.o
+  000005f0-000005f1  SWI2_EGU2_IRQHandler                2   2  Code  RX  nrf52833_Vectors.o
+  000005f2-000005f3  SWI3_EGU3_IRQHandler                2   2  Code  RX  nrf52833_Vectors.o
+  000005f4-000005f5  SWI4_EGU4_IRQHandler                2   2  Code  RX  nrf52833_Vectors.o
+  000005f6-000005f7  SWI5_EGU5_IRQHandler                2   2  Code  RX  nrf52833_Vectors.o
+  000005f8-000005f9  TIMER3_IRQHandler                   2   2  Code  RX  nrf52833_Vectors.o
+  000005fa-000005fb  TIMER4_IRQHandler                   2   2  Code  RX  nrf52833_Vectors.o
+  000005fc-000005fd  PWM0_IRQHandler                     2   2  Code  RX  nrf52833_Vectors.o
+  000005fe-000005ff  PDM_IRQHandler                      2   2  Code  RX  nrf52833_Vectors.o
+  00000600-00000601  MWU_IRQHandler                      2   2  Code  RX  nrf52833_Vectors.o
+  00000602-00000603  PWM1_IRQHandler                     2   2  Code  RX  nrf52833_Vectors.o
+  00000604-00000605  PWM2_IRQHandler                     2   2  Code  RX  nrf52833_Vectors.o
+  00000606-00000607  SPIM2_SPIS2_SPI2_IRQHandler
+                                                         2   2  Code  RX  nrf52833_Vectors.o
+  00000608-00000609  RTC2_IRQHandler                     2   2  Code  RX  nrf52833_Vectors.o
+  0000060a-0000060b  I2S_IRQHandler                      2   2  Code  RX  nrf52833_Vectors.o
+  0000060c-0000060d  FPU_IRQHandler                      2   2  Code  RX  nrf52833_Vectors.o
+  0000060e-0000060f  USBD_IRQHandler                     2   2  Code  RX  nrf52833_Vectors.o
+  00000610-00000611  UARTE1_IRQHandler                   2   2  Code  RX  nrf52833_Vectors.o
+  00000612-00000613  PWM3_IRQHandler                     2   2  Code  RX  nrf52833_Vectors.o
+  00000614-00000615  SPIM3_IRQHandler                    2   2  Code  RX  nrf52833_Vectors.o
+  00000616-00000617  Dummy_Handler                       2   2  Code  RX  nrf52833_Vectors.o
+  00000618-0000062b  SystemCoreClockUpdate              20   2  Code  RX  system_nrf52.o
+  0000062c-00000643  clock_init                         24   2  Code  RX  target.o
+  00000644-00000713  radio_init                        208   2  Code  RX  target.o
+  00000714-00000747  radio_send                         52   2  Code  RX  target.o
+  00000748-0000075f  reset_handler                      24   2  Code  RX  nRF_Startup.o
+  00000760-00000763  [.init_array]                       4   4  ----  --  nRF_Startup.o
+  00000764-00000783  __SEGGER_init_ctors                32   4  Code  RX  SEGGER_crtinit_v7em_little.o
+  00000784-0000079b  __SEGGER_init_table__              24   4  Cnst  RO  [ Linker created ]
+  0000079c-000007a5  __SEGGER_init_data__               10   4  Cnst  RO  [ Linker created ]
+  000007a6-000007b9  __SEGGER_init_copy                 20   2  Code  RX  SEGGER_crtinit_v7em_little.o
+  000007ba-1fffffff  ( UNUSED .=.+536868934 )   536 868 934
+                                                             -  ----  -   -
+  20000000-20000003  SystemCoreClock                     4   4  Init  RW  system_nrf52.o
+  20000004-20000009  pdu                                 6   1  Init  RW  target.o
+  2000000a-2001f7ff  ( UNUSED .=.+129014 )         129 014   -  ----  -   -
+  2001f800-2001ffff  [.bss.block.stack]              2 048   8  None  ZI  [ Linker created ]
+
+
+***********************************************************************************************
+***                                                                                         ***
+***                                       SYMBOL LIST                                       ***
+***                                                                                         ***
+***********************************************************************************************
+
+Function symbols by name:
+
+  Symbol name                   Address        Size  Align  Type  Bd  Object File
+  -------------------------  ----------  ----------  -----  ----  --  -----------
+  CCM_AAR_IRQHandler         0x000005E3                  2  Code  Wk  nrf52833_Vectors.o
+  COMP_LPCOMP_IRQHandler     0x000005EB                  2  Code  Wk  nrf52833_Vectors.o
+  Dummy_Handler              0x00000617                  2  Code  Wk  nrf52833_Vectors.o
+  ECB_IRQHandler             0x000005E1                  2  Code  Wk  nrf52833_Vectors.o
+  FPU_IRQHandler             0x0000060D                  2  Code  Wk  nrf52833_Vectors.o
+  GPIOTE_IRQHandler          0x000005D1                  2  Code  Wk  nrf52833_Vectors.o
+  HardFault_Handler          0x00000101                  4  Code  Wk  nRF_Startup.o
+  I2S_IRQHandler             0x0000060B                  2  Code  Wk  nrf52833_Vectors.o
+  MWU_IRQHandler             0x00000601                  2  Code  Wk  nrf52833_Vectors.o
+  NFCT_IRQHandler            0x000005CF                  2  Code  Wk  nrf52833_Vectors.o
+  NMI_Handler                0x000005BD                  2  Code  Wk  nrf52833_Vectors.o
+  PDM_IRQHandler             0x000005FF                  2  Code  Wk  nrf52833_Vectors.o
+  POWER_CLOCK_IRQHandler     0x000005C5                  2  Code  Wk  nrf52833_Vectors.o
+  PWM0_IRQHandler            0x000005FD                  2  Code  Wk  nrf52833_Vectors.o
+  PWM1_IRQHandler            0x00000603                  2  Code  Wk  nrf52833_Vectors.o
+  PWM2_IRQHandler            0x00000605                  2  Code  Wk  nrf52833_Vectors.o
+  PWM3_IRQHandler            0x00000613                  2  Code  Wk  nrf52833_Vectors.o
+  PendSV_Handler             0x000005C1                  2  Code  Wk  nrf52833_Vectors.o
+  QDEC_IRQHandler            0x000005E9                  2  Code  Wk  nrf52833_Vectors.o
+  RADIO_IRQHandler           0x000005C7                  2  Code  Wk  nrf52833_Vectors.o
+  RNG_IRQHandler             0x000005DF                  2  Code  Wk  nrf52833_Vectors.o
+  RTC0_IRQHandler            0x000005DB                  2  Code  Wk  nrf52833_Vectors.o
+  RTC1_IRQHandler            0x000005E7                  2  Code  Wk  nrf52833_Vectors.o
+  RTC2_IRQHandler            0x00000609                  2  Code  Wk  nrf52833_Vectors.o
+  Reset_Handler              0x00000749                  2  Code  Gb  nRF_Startup.o
+  SAADC_IRQHandler           0x000005D3                  2  Code  Wk  nrf52833_Vectors.o
+  SPIM0_SPIS0_TWIM0_TWIS0_SPI0_TWI0_IRQHandler
+                             0x000005CB                  2  Code  Wk  nrf52833_Vectors.o
+  SPIM1_SPIS1_TWIM1_TWIS1_SPI1_TWI1_IRQHandler
+                             0x000005CD                  2  Code  Wk  nrf52833_Vectors.o
+  SPIM2_SPIS2_SPI2_IRQHandler
+                             0x00000607                  2  Code  Wk  nrf52833_Vectors.o
+  SPIM3_IRQHandler           0x00000615                  2  Code  Wk  nrf52833_Vectors.o
+  SVC_Handler                0x000005BF                  2  Code  Wk  nrf52833_Vectors.o
+  SWI0_EGU0_IRQHandler       0x000005ED                  2  Code  Wk  nrf52833_Vectors.o
+  SWI1_EGU1_IRQHandler       0x000005EF                  2  Code  Wk  nrf52833_Vectors.o
+  SWI2_EGU2_IRQHandler       0x000005F1                  2  Code  Wk  nrf52833_Vectors.o
+  SWI3_EGU3_IRQHandler       0x000005F3                  2  Code  Wk  nrf52833_Vectors.o
+  SWI4_EGU4_IRQHandler       0x000005F5                  2  Code  Wk  nrf52833_Vectors.o
+  SWI5_EGU5_IRQHandler       0x000005F7                  2  Code  Wk  nrf52833_Vectors.o
+  SysTick_Handler            0x000005C3                  2  Code  Wk  nrf52833_Vectors.o
+  SystemCoreClockUpdate      0x00000619          20      2  Code  Gb  system_nrf52.o
+  SystemInit                 0x0000013D         458      2  Code  Gb  system_nrf52.o
+  TEMP_IRQHandler            0x000005DD                  2  Code  Wk  nrf52833_Vectors.o
+  TIMER0_IRQHandler          0x000005D5                  2  Code  Wk  nrf52833_Vectors.o
+  TIMER1_IRQHandler          0x000005D7                  2  Code  Wk  nrf52833_Vectors.o
+  TIMER2_IRQHandler          0x000005D9                  2  Code  Wk  nrf52833_Vectors.o
+  TIMER3_IRQHandler          0x000005F9                  2  Code  Wk  nrf52833_Vectors.o
+  TIMER4_IRQHandler          0x000005FB                  2  Code  Wk  nrf52833_Vectors.o
+  UARTE0_UART0_IRQHandler    0x000005C9                  2  Code  Wk  nrf52833_Vectors.o
+  UARTE1_IRQHandler          0x00000611                  2  Code  Wk  nrf52833_Vectors.o
+  USBD_IRQHandler            0x0000060F                  2  Code  Wk  nrf52833_Vectors.o
+  WDT_IRQHandler             0x000005E5                  2  Code  Wk  nrf52833_Vectors.o
+  __SEGGER_init_copy         0x000007A7          20      2  Code  Wk  SEGGER_crtinit_v7em_little.o
+  __SEGGER_init_ctors        0x00000765          24      4  Code  Wk  SEGGER_crtinit_v7em_little.o
+  __SEGGER_init_done         0x00000133                  4  Code  Gb  SEGGER_THUMB_Startup.o
+  __startup_complete         0x00000133                  4  Code  Gb  SEGGER_THUMB_Startup.o
+  _start                     0x00000129          14      4  Code  Gb  SEGGER_THUMB_Startup.o
+  clock_init                 0x0000062D          24      2  Code  Lc  target.o
+  delay                      0x000005AB          18      2  Code  Lc  target.o
+  exit                       0x00000137           2      4  Code  Gb  SEGGER_THUMB_Startup.o
+  led_off                    0x0000053F          42      2  Code  Lc  target.o
+  led_on                     0x00000569          66      2  Code  Lc  target.o
+  main                       0x000004AD         146      2  Code  Gb  target.o
+  nrf52_configuration_249    0x0000044B          98      2  Code  Lc  system_nrf52.o
+  nrf52_errata_136           0x000003CB          98      2  Code  Lc  system_nrf52.o
+  nrf52_errata_36            0x00000307          98      2  Code  Lc  system_nrf52.o
+  nrf52_errata_66            0x00000369          98      2  Code  Lc  system_nrf52.o
+  nrf52_handle_approtect     0x0000042D          30      2  Code  Lc  system_nrf52.o
+  radio_init                 0x00000645         208      2  Code  Lc  target.o
+  radio_send                 0x00000715          52      2  Code  Lc  target.o
+  reset_handler              0x00000749                  2  Code  Gb  nRF_Startup.o
+
+Function symbols by address:
+
+     Address  Symbol name                      Size  Align  Type  Bd  Object File
+  ----------  -------------------------  ----------  -----  ----  --  -----------
+  0x00000101  HardFault_Handler                          4  Code  Wk  nRF_Startup.o
+  0x00000129  _start                             14      4  Code  Gb  SEGGER_THUMB_Startup.o
+  0x00000133  __startup_complete                         4  Code  Gb  SEGGER_THUMB_Startup.o
+  0x00000133  __SEGGER_init_done                         4  Code  Gb  SEGGER_THUMB_Startup.o
+  0x00000137  exit                                2      4  Code  Gb  SEGGER_THUMB_Startup.o
+  0x0000013D  SystemInit                        458      2  Code  Gb  system_nrf52.o
+  0x00000307  nrf52_errata_36                    98      2  Code  Lc  system_nrf52.o
+  0x00000369  nrf52_errata_66                    98      2  Code  Lc  system_nrf52.o
+  0x000003CB  nrf52_errata_136                   98      2  Code  Lc  system_nrf52.o
+  0x0000042D  nrf52_handle_approtect             30      2  Code  Lc  system_nrf52.o
+  0x0000044B  nrf52_configuration_249            98      2  Code  Lc  system_nrf52.o
+  0x000004AD  main                              146      2  Code  Gb  target.o
+  0x0000053F  led_off                            42      2  Code  Lc  target.o
+  0x00000569  led_on                             66      2  Code  Lc  target.o
+  0x000005AB  delay                              18      2  Code  Lc  target.o
+  0x000005BD  NMI_Handler                                2  Code  Wk  nrf52833_Vectors.o
+  0x000005BF  SVC_Handler                                2  Code  Wk  nrf52833_Vectors.o
+  0x000005C1  PendSV_Handler                             2  Code  Wk  nrf52833_Vectors.o
+  0x000005C3  SysTick_Handler                            2  Code  Wk  nrf52833_Vectors.o
+  0x000005C5  POWER_CLOCK_IRQHandler                     2  Code  Wk  nrf52833_Vectors.o
+  0x000005C7  RADIO_IRQHandler                           2  Code  Wk  nrf52833_Vectors.o
+  0x000005C9  UARTE0_UART0_IRQHandler                    2  Code  Wk  nrf52833_Vectors.o
+  0x000005CB  SPIM0_SPIS0_TWIM0_TWIS0_SPI0_TWI0_IRQHandler
+                                                         2  Code  Wk  nrf52833_Vectors.o
+  0x000005CD  SPIM1_SPIS1_TWIM1_TWIS1_SPI1_TWI1_IRQHandler
+                                                         2  Code  Wk  nrf52833_Vectors.o
+  0x000005CF  NFCT_IRQHandler                            2  Code  Wk  nrf52833_Vectors.o
+  0x000005D1  GPIOTE_IRQHandler                          2  Code  Wk  nrf52833_Vectors.o
+  0x000005D3  SAADC_IRQHandler                           2  Code  Wk  nrf52833_Vectors.o
+  0x000005D5  TIMER0_IRQHandler                          2  Code  Wk  nrf52833_Vectors.o
+  0x000005D7  TIMER1_IRQHandler                          2  Code  Wk  nrf52833_Vectors.o
+  0x000005D9  TIMER2_IRQHandler                          2  Code  Wk  nrf52833_Vectors.o
+  0x000005DB  RTC0_IRQHandler                            2  Code  Wk  nrf52833_Vectors.o
+  0x000005DD  TEMP_IRQHandler                            2  Code  Wk  nrf52833_Vectors.o
+  0x000005DF  RNG_IRQHandler                             2  Code  Wk  nrf52833_Vectors.o
+  0x000005E1  ECB_IRQHandler                             2  Code  Wk  nrf52833_Vectors.o
+  0x000005E3  CCM_AAR_IRQHandler                         2  Code  Wk  nrf52833_Vectors.o
+  0x000005E5  WDT_IRQHandler                             2  Code  Wk  nrf52833_Vectors.o
+  0x000005E7  RTC1_IRQHandler                            2  Code  Wk  nrf52833_Vectors.o
+  0x000005E9  QDEC_IRQHandler                            2  Code  Wk  nrf52833_Vectors.o
+  0x000005EB  COMP_LPCOMP_IRQHandler                     2  Code  Wk  nrf52833_Vectors.o
+  0x000005ED  SWI0_EGU0_IRQHandler                       2  Code  Wk  nrf52833_Vectors.o
+  0x000005EF  SWI1_EGU1_IRQHandler                       2  Code  Wk  nrf52833_Vectors.o
+  0x000005F1  SWI2_EGU2_IRQHandler                       2  Code  Wk  nrf52833_Vectors.o
+  0x000005F3  SWI3_EGU3_IRQHandler                       2  Code  Wk  nrf52833_Vectors.o
+  0x000005F5  SWI4_EGU4_IRQHandler                       2  Code  Wk  nrf52833_Vectors.o
+  0x000005F7  SWI5_EGU5_IRQHandler                       2  Code  Wk  nrf52833_Vectors.o
+  0x000005F9  TIMER3_IRQHandler                          2  Code  Wk  nrf52833_Vectors.o
+  0x000005FB  TIMER4_IRQHandler                          2  Code  Wk  nrf52833_Vectors.o
+  0x000005FD  PWM0_IRQHandler                            2  Code  Wk  nrf52833_Vectors.o
+  0x000005FF  PDM_IRQHandler                             2  Code  Wk  nrf52833_Vectors.o
+  0x00000601  MWU_IRQHandler                             2  Code  Wk  nrf52833_Vectors.o
+  0x00000603  PWM1_IRQHandler                            2  Code  Wk  nrf52833_Vectors.o
+  0x00000605  PWM2_IRQHandler                            2  Code  Wk  nrf52833_Vectors.o
+  0x00000607  SPIM2_SPIS2_SPI2_IRQHandler
+                                                         2  Code  Wk  nrf52833_Vectors.o
+  0x00000609  RTC2_IRQHandler                            2  Code  Wk  nrf52833_Vectors.o
+  0x0000060B  I2S_IRQHandler                             2  Code  Wk  nrf52833_Vectors.o
+  0x0000060D  FPU_IRQHandler                             2  Code  Wk  nrf52833_Vectors.o
+  0x0000060F  USBD_IRQHandler                            2  Code  Wk  nrf52833_Vectors.o
+  0x00000611  UARTE1_IRQHandler                          2  Code  Wk  nrf52833_Vectors.o
+  0x00000613  PWM3_IRQHandler                            2  Code  Wk  nrf52833_Vectors.o
+  0x00000615  SPIM3_IRQHandler                           2  Code  Wk  nrf52833_Vectors.o
+  0x00000617  Dummy_Handler                              2  Code  Wk  nrf52833_Vectors.o
+  0x00000619  SystemCoreClockUpdate              20      2  Code  Gb  system_nrf52.o
+  0x0000062D  clock_init                         24      2  Code  Lc  target.o
+  0x00000645  radio_init                        208      2  Code  Lc  target.o
+  0x00000715  radio_send                         52      2  Code  Lc  target.o
+  0x00000749  reset_handler                              2  Code  Gb  nRF_Startup.o
+  0x00000749  Reset_Handler                              2  Code  Gb  nRF_Startup.o
+  0x00000765  __SEGGER_init_ctors                24      4  Code  Wk  SEGGER_crtinit_v7em_little.o
+  0x000007A7  __SEGGER_init_copy                 20      2  Code  Wk  SEGGER_crtinit_v7em_little.o
+
+Function symbols by descending size:
+
+  Symbol name                      Size  Align  Type  Bd  Object File
+  -------------------------  ----------  -----  ----  --  -----------
+  SystemInit                        458      2  Code  Gb  system_nrf52.o
+  radio_init                        208      2  Code  Lc  target.o
+  main                              146      2  Code  Gb  target.o
+  nrf52_configuration_249            98      2  Code  Lc  system_nrf52.o
+  nrf52_errata_136                   98      2  Code  Lc  system_nrf52.o
+  nrf52_errata_36                    98      2  Code  Lc  system_nrf52.o
+  nrf52_errata_66                    98      2  Code  Lc  system_nrf52.o
+  led_on                             66      2  Code  Lc  target.o
+  radio_send                         52      2  Code  Lc  target.o
+  led_off                            42      2  Code  Lc  target.o
+  nrf52_handle_approtect             30      2  Code  Lc  system_nrf52.o
+  __SEGGER_init_ctors                24      4  Code  Wk  SEGGER_crtinit_v7em_little.o
+  clock_init                         24      2  Code  Lc  target.o
+  SystemCoreClockUpdate              20      2  Code  Gb  system_nrf52.o
+  __SEGGER_init_copy                 20      2  Code  Wk  SEGGER_crtinit_v7em_little.o
+  delay                              18      2  Code  Lc  target.o
+  _start                             14      4  Code  Gb  SEGGER_THUMB_Startup.o
+  exit                                2      4  Code  Gb  SEGGER_THUMB_Startup.o
+  CCM_AAR_IRQHandler                         2  Code  Wk  nrf52833_Vectors.o
+  COMP_LPCOMP_IRQHandler                     2  Code  Wk  nrf52833_Vectors.o
+  Dummy_Handler                              2  Code  Wk  nrf52833_Vectors.o
+  ECB_IRQHandler                             2  Code  Wk  nrf52833_Vectors.o
+  FPU_IRQHandler                             2  Code  Wk  nrf52833_Vectors.o
+  GPIOTE_IRQHandler                          2  Code  Wk  nrf52833_Vectors.o
+  HardFault_Handler                          4  Code  Wk  nRF_Startup.o
+  I2S_IRQHandler                             2  Code  Wk  nrf52833_Vectors.o
+  MWU_IRQHandler                             2  Code  Wk  nrf52833_Vectors.o
+  NFCT_IRQHandler                            2  Code  Wk  nrf52833_Vectors.o
+  NMI_Handler                                2  Code  Wk  nrf52833_Vectors.o
+  PDM_IRQHandler                             2  Code  Wk  nrf52833_Vectors.o
+  POWER_CLOCK_IRQHandler                     2  Code  Wk  nrf52833_Vectors.o
+  PWM0_IRQHandler                            2  Code  Wk  nrf52833_Vectors.o
+  PWM1_IRQHandler                            2  Code  Wk  nrf52833_Vectors.o
+  PWM2_IRQHandler                            2  Code  Wk  nrf52833_Vectors.o
+  PWM3_IRQHandler                            2  Code  Wk  nrf52833_Vectors.o
+  PendSV_Handler                             2  Code  Wk  nrf52833_Vectors.o
+  QDEC_IRQHandler                            2  Code  Wk  nrf52833_Vectors.o
+  RADIO_IRQHandler                           2  Code  Wk  nrf52833_Vectors.o
+  RNG_IRQHandler                             2  Code  Wk  nrf52833_Vectors.o
+  RTC0_IRQHandler                            2  Code  Wk  nrf52833_Vectors.o
+  RTC1_IRQHandler                            2  Code  Wk  nrf52833_Vectors.o
+  RTC2_IRQHandler                            2  Code  Wk  nrf52833_Vectors.o
+  Reset_Handler                              2  Code  Gb  nRF_Startup.o
+  SAADC_IRQHandler                           2  Code  Wk  nrf52833_Vectors.o
+  SPIM0_SPIS0_TWIM0_TWIS0_SPI0_TWI0_IRQHandler
+                                             2  Code  Wk  nrf52833_Vectors.o
+  SPIM1_SPIS1_TWIM1_TWIS1_SPI1_TWI1_IRQHandler
+                                             2  Code  Wk  nrf52833_Vectors.o
+  SPIM2_SPIS2_SPI2_IRQHandler
+                                             2  Code  Wk  nrf52833_Vectors.o
+  SPIM3_IRQHandler                           2  Code  Wk  nrf52833_Vectors.o
+  SVC_Handler                                2  Code  Wk  nrf52833_Vectors.o
+  SWI0_EGU0_IRQHandler                       2  Code  Wk  nrf52833_Vectors.o
+  SWI1_EGU1_IRQHandler                       2  Code  Wk  nrf52833_Vectors.o
+  SWI2_EGU2_IRQHandler                       2  Code  Wk  nrf52833_Vectors.o
+  SWI3_EGU3_IRQHandler                       2  Code  Wk  nrf52833_Vectors.o
+  SWI4_EGU4_IRQHandler                       2  Code  Wk  nrf52833_Vectors.o
+  SWI5_EGU5_IRQHandler                       2  Code  Wk  nrf52833_Vectors.o
+  SysTick_Handler                            2  Code  Wk  nrf52833_Vectors.o
+  TEMP_IRQHandler                            2  Code  Wk  nrf52833_Vectors.o
+  TIMER0_IRQHandler                          2  Code  Wk  nrf52833_Vectors.o
+  TIMER1_IRQHandler                          2  Code  Wk  nrf52833_Vectors.o
+  TIMER2_IRQHandler                          2  Code  Wk  nrf52833_Vectors.o
+  TIMER3_IRQHandler                          2  Code  Wk  nrf52833_Vectors.o
+  TIMER4_IRQHandler                          2  Code  Wk  nrf52833_Vectors.o
+  UARTE0_UART0_IRQHandler                    2  Code  Wk  nrf52833_Vectors.o
+  UARTE1_IRQHandler                          2  Code  Wk  nrf52833_Vectors.o
+  USBD_IRQHandler                            2  Code  Wk  nrf52833_Vectors.o
+  WDT_IRQHandler                             2  Code  Wk  nrf52833_Vectors.o
+  __SEGGER_init_done                         4  Code  Gb  SEGGER_THUMB_Startup.o
+  __startup_complete                         4  Code  Gb  SEGGER_THUMB_Startup.o
+  reset_handler                              2  Code  Gb  nRF_Startup.o
+
+Read-write data symbols by name:
+
+  Symbol name                   Address        Size  Align  Type  Bd  Object File
+  -------------------------  ----------  ----------  -----  ----  --  -----------
+  SystemCoreClock            0x20000000           4      4  Init  Gb  system_nrf52.o
+  pdu                        0x20000004           6         Init  Lc  target.o
+
+Read-write data symbols by address:
+
+     Address  Symbol name                      Size  Align  Type  Bd  Object File
+  ----------  -------------------------  ----------  -----  ----  --  -----------
+  0x20000000  SystemCoreClock                     4      4  Init  Gb  system_nrf52.o
+  0x20000004  pdu                                 6         Init  Lc  target.o
+
+Read-write data symbols by descending size:
+
+  Symbol name                      Size  Align  Type  Bd  Object File
+  -------------------------  ----------  -----  ----  --  -----------
+  pdu                                 6         Init  Lc  target.o
+  SystemCoreClock                     4      4  Init  Gb  system_nrf52.o
+
+Read-only data symbols by name:
+
+  Symbol name                   Address        Size  Align  Type  Bd  Object File
+  -------------------------  ----------  ----------  -----  ----  --  -----------
+  __SEGGER_init_data__       0x0000079C        [10]      4  Cnst  Lc  [ Linker created ]
+  __SEGGER_init_table__      0x00000784        [24]      4  Cnst  Lc  [ Linker created ]
+
+Read-only data symbols by address:
+
+     Address  Symbol name                      Size  Align  Type  Bd  Object File
+  ----------  -------------------------  ----------  -----  ----  --  -----------
+  0x00000784  __SEGGER_init_table__            [24]      4  Cnst  Lc  [ Linker created ]
+  0x0000079C  __SEGGER_init_data__             [10]      4  Cnst  Lc  [ Linker created ]
+
+Untyped symbols by name:
+
+  Symbol name                     Value        Size  Align  Type  Bd  Object File
+  -------------------------  ----------  ----------  -----  ----  --  -----------
+  __CODE_RAM1_segment_end__  0x00820000                     ----  Gb  [ Linker created ]
+  __CODE_RAM1_segment_size__
+                             0x00020000                     ----  Gb  [ Linker created ]
+  __CODE_RAM1_segment_start__
+                             0x00800000                     ----  Gb  [ Linker created ]
+  __CODE_RAM1_segment_used_end__
+                             0x00800000                     ----  Gb  [ Linker created ]
+  __CODE_RAM1_segment_used_size__
+                             0x00000000                     ----  Gb  [ Linker created ]
+  __CODE_RAM1_segment_used_start__
+                             0x00800000                     ----  Gb  [ Linker created ]
+  __FLASH1_segment_end__     0x00080000                     ----  Gb  [ Linker created ]
+  __FLASH1_segment_size__    0x00080000                     ----  Gb  [ Linker created ]
+  __FLASH1_segment_start__   0x00000000                     ----  Gb  [ Linker created ]
+  __FLASH1_segment_used_end__
+                             0x000007BA                     ----  Gb  [ Linker created ]
+  __FLASH1_segment_used_size__
+                             0x000007BA                     ----  Gb  [ Linker created ]
+  __FLASH1_segment_used_start__
+                             0x00000000                     ----  Gb  [ Linker created ]
+  __FLASH_segment_end__      0x00080000                     ----  Gb  [ Linker created ]
+  __FLASH_segment_size__     0x00080000                     ----  Gb  [ Linker created ]
+  __FLASH_segment_start__    0x00000000                     ----  Gb  [ Linker created ]
+  __FLASH_segment_used_end__
+                             0x000007BA                     ----  Gb  [ Linker created ]
+  __FLASH_segment_used_size__
+                             0x000007BA                     ----  Gb  [ Linker created ]
+  __FLASH_segment_used_start__
+                             0x00000000                     ----  Gb  [ Linker created ]
+  __HEAPSIZE__               0x00000400                     ----  Gb  [ Linker created ]
+  __RAM1_segment_end__       0x20020000                     ----  Gb  [ Linker created ]
+  __RAM1_segment_size__      0x00020000                     ----  Gb  [ Linker created ]
+  __RAM1_segment_start__     0x20000000                     ----  Gb  [ Linker created ]
+  __RAM1_segment_used_end__  0x20020000                     ----  Gb  [ Linker created ]
+  __RAM1_segment_used_size__
+                             0x00020000                     ----  Gb  [ Linker created ]
+  __RAM1_segment_used_start__
+                             0x20000000                     ----  Gb  [ Linker created ]
+  __RAM_segment_end__        0x20020000                     ----  Gb  [ Linker created ]
+  __RAM_segment_size__       0x00020000                     ----  Gb  [ Linker created ]
+  __RAM_segment_start__      0x20000000                     ----  Gb  [ Linker created ]
+  __RAM_segment_used_end__   0x20020000                     ----  Gb  [ Linker created ]
+  __RAM_segment_used_size__  0x00020000                     ----  Gb  [ Linker created ]
+  __RAM_segment_used_start__
+                             0x20000000                     ----  Gb  [ Linker created ]
+  __STACKSIZE_PROCESS__      0x00000000                     ----  Gb  [ Linker created ]
+  __STACKSIZE__              0x00000800                     ----  Gb  [ Linker created ]
+  __ctors_end__              0x00000764                     ----  Gb  [ Linker created ]
+  __ctors_start__            0x00000760                     ----  Gb  [ Linker created ]
+  __stack_end__              0x20020000                     ----  Gb  [ Linker created ]
+  __thread_pointer$          0x00000000                     ----  Gb  [ Linker created ]
+  _vectors                   0x00000000       [256]    256  Code  Gb  nrf52833_Vectors.o
+  _vectors_end               0x00000100                256  Code  Lc  nrf52833_Vectors.o
+
+Untyped symbols by address:
+
+       Value  Symbol name                      Size  Align  Type  Bd  Object File
+  ----------  -------------------------  ----------  -----  ----  --  -----------
+  0x00000000  _vectors                        [256]    256  Code  Gb  nrf52833_Vectors.o
+  0x00000000  __thread_pointer$                             ----  Gb  [ Linker created ]
+  0x00000000  __STACKSIZE_PROCESS__                         ----  Gb  [ Linker created ]
+  0x00000000  __FLASH_segment_used_start__
+                                                            ----  Gb  [ Linker created ]
+  0x00000000  __FLASH_segment_start__                       ----  Gb  [ Linker created ]
+  0x00000000  __FLASH1_segment_used_start__
+                                                            ----  Gb  [ Linker created ]
+  0x00000000  __FLASH1_segment_start__                      ----  Gb  [ Linker created ]
+  0x00000000  __CODE_RAM1_segment_used_size__
+                                                            ----  Gb  [ Linker created ]
+  0x00000100  _vectors_end                             256  Code  Lc  nrf52833_Vectors.o
+  0x00000400  __HEAPSIZE__                                  ----  Gb  [ Linker created ]
+  0x00000760  __ctors_start__                               ----  Gb  [ Linker created ]
+  0x00000764  __ctors_end__                                 ----  Gb  [ Linker created ]
+  0x000007BA  __FLASH_segment_used_size__
+                                                            ----  Gb  [ Linker created ]
+  0x000007BA  __FLASH_segment_used_end__
+                                                            ----  Gb  [ Linker created ]
+  0x000007BA  __FLASH1_segment_used_size__
+                                                            ----  Gb  [ Linker created ]
+  0x000007BA  __FLASH1_segment_used_end__
+                                                            ----  Gb  [ Linker created ]
+  0x00000800  __STACKSIZE__                                 ----  Gb  [ Linker created ]
+  0x00020000  __RAM_segment_used_size__                     ----  Gb  [ Linker created ]
+  0x00020000  __RAM_segment_size__                          ----  Gb  [ Linker created ]
+  0x00020000  __RAM1_segment_used_size__
+                                                            ----  Gb  [ Linker created ]
+  0x00020000  __RAM1_segment_size__                         ----  Gb  [ Linker created ]
+  0x00020000  __CODE_RAM1_segment_size__
+                                                            ----  Gb  [ Linker created ]
+  0x00080000  __FLASH_segment_size__                        ----  Gb  [ Linker created ]
+  0x00080000  __FLASH_segment_end__                         ----  Gb  [ Linker created ]
+  0x00080000  __FLASH1_segment_size__                       ----  Gb  [ Linker created ]
+  0x00080000  __FLASH1_segment_end__                        ----  Gb  [ Linker created ]
+  0x00800000  __CODE_RAM1_segment_used_start__
+                                                            ----  Gb  [ Linker created ]
+  0x00800000  __CODE_RAM1_segment_used_end__
+                                                            ----  Gb  [ Linker created ]
+  0x00800000  __CODE_RAM1_segment_start__
+                                                            ----  Gb  [ Linker created ]
+  0x00820000  __CODE_RAM1_segment_end__                     ----  Gb  [ Linker created ]
+  0x20000000  __RAM_segment_used_start__
+                                                            ----  Gb  [ Linker created ]
+  0x20000000  __RAM_segment_start__                         ----  Gb  [ Linker created ]
+  0x20000000  __RAM1_segment_used_start__
+                                                            ----  Gb  [ Linker created ]
+  0x20000000  __RAM1_segment_start__                        ----  Gb  [ Linker created ]
+  0x20020000  __stack_end__                                 ----  Gb  [ Linker created ]
+  0x20020000  __RAM_segment_used_end__                      ----  Gb  [ Linker created ]
+  0x20020000  __RAM_segment_end__                           ----  Gb  [ Linker created ]
+  0x20020000  __RAM1_segment_used_end__                     ----  Gb  [ Linker created ]
+  0x20020000  __RAM1_segment_end__                          ----  Gb  [ Linker created ]
+
+
+***********************************************************************************************
+***                                                                                         ***
+***                                      LINK SUMMARY                                       ***
+***                                                                                         ***
+***********************************************************************************************
+
+Memory breakdown:
+
+    1 940 bytes read-only  code    + 
+       34 bytes read-only  data    =   1 974 bytes read-only (total)
+    2 058 bytes read-write data
+
+Region summary:
+
+  Name        Range                     Size                 Used               Unused       Alignment Loss
+  ----------  -----------------  -----------  -------------------  -------------------  -------------------
+  FLASH       00000000-0007ffff      524 288        1 978   0.38%      522 310  99.62%            0   0.00%
+  RAM         20000000-2001ffff      131 072        2 058   1.57%      129 014  98.43%            0   0.00%
+
+Link complete: 0 errors, 0 warnings, 0 remarks
