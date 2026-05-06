@@ -63,9 +63,7 @@
     </folder>
     <folder Name="Source Files">
       <configuration Name="Common" filter="c;cpp;cxx;cc;h;s;asm;inc" />
-      <file file_name="morseChat.c">
-        <configuration Name="Debug" c_user_include_directories="" />
-      </file>
+      <file file_name="../Source/morseChat.c" />
     </folder>
     <folder Name="System Files">
       <file file_name="../common/system/nRF/Source/nrf52833_Vectors.s" />

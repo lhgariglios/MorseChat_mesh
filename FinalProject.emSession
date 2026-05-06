@@ -56,7 +56,7 @@
   <Watches active="0" update="Never"/>
  </Watch4>
  <Files>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="361" useTextEdit="1" path="Target/morseChat.c" left="0" selected="1" top="345" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="361" useTextEdit="1" path="Target/morseChat.c" left="0" selected="1" top="0" codecName="Default"/>
  </Files>
- <EMStudioWindow activeProject="MorseChat" fileDialogDefaultFilter="*" autoConnectTarget="J-Link" buildConfiguration="Debug" sessionSettings="" debugSearchFileMap="" fileDialogInitialDirectory="C:/Users/lhenr/OneDrive/Documentos/ENSTA/Mineure/IoT/FinalProject/Target" debugSearchPath="" autoConnectCapabilities="3711"/>
+ <EMStudioWindow activeProject="MorseChat" fileDialogDefaultFilter="*" autoConnectTarget="J-Link" buildConfiguration="Debug" sessionSettings="" debugSearchFileMap="" fileDialogInitialDirectory="C:/Users/lhenr/OneDrive/Documentos/ENSTA/Mineure/IoT/MorseChat_mesh/Source" debugSearchPath="" autoConnectCapabilities="3199"/>
 </session>
