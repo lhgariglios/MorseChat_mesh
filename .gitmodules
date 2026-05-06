@@ -1,0 +1,3 @@
+[submodule "openwsn-fw"]
+	path = openwsn-fw
+	url = git@github.com:lhgariglios/openwsn-fw.git
